@@ -94,23 +94,47 @@ GROUP BY rating;
 ```
 
 
-### 
+#### Challenge: Are there any customers with the same last name? 
+> NO 
 
-``` sql 
-
+``` sql
+SELECT COUNT(last_name), last_name
+FROM customer
+GROUP BY last_name
+HAVING count(last_name) > 1;
 ```
 
 
+## Functions 
 
-### 
+### 1. What is the average rental rate of films? Can you round the result to 2 decimal places?
 
 ``` sql 
-
+SELECT ROUND(AVG(rental_rate), 2)
+FROM film;
 ```
 
-
-### 
+#### Challenge: What is the average time that people have rentals before returning? Hint: the output you’ll get may include a number of hours > 24. You can use the function justify_interval on the result to get output that looks more like you might expect.
 
 ``` sql 
+SELECT justify_interval(AVG(return_date-rental_date)) 
+FROM rental;
+```
 
+#### Challenge 2:  Select the 10 actors who have the longest names (first and last name combined).
+
+``` sql 
+SELECT concat(first_name, last_name), length(concat(first_name, last_name))
+FROM actor
+ORDER BY length(concat(first_name, last_name)) DESC
+LIMIT 10;
+```
+
+## Functions 
+
+### 1. What is the average rental rate of films? Can you round the result to 2 decimal places?
+
+``` sql 
+SELECT ROUND(AVG(rental_rate), 2)
+FROM film;
 ```

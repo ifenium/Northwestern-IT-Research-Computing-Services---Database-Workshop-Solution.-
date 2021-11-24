@@ -138,7 +138,8 @@ LIMIT 10;
 SELECT COUNT(actor_id), film_id
 FROM film_actor
 GROUP BY film_id
-ORDER BY COUNT(actor_id) DESC;
+ORDER BY COUNT(actor_id) DESC
+LIMIT 1;
 ```
 > film_id: 508
 
@@ -146,6 +147,7 @@ ORDER BY COUNT(actor_id) DESC;
 SELECT COUNT(film_id), actor_id
 FROM film_actor
 GROUP BY actor_id
-ORDER BY COUNT(film_id) DESC;
+ORDER BY COUNT(film_id) DESC
+LIMIT 1;
 ```
 > actor_id: 107 

@@ -60,15 +60,57 @@ WHERE return_date IS NOT NULL
 ORDER BY return_date DESC LIMIT 3;
 ```
 
+## Counting
+
+### 1. How many films are rated NC-17? How many are rated PG or PG-13?
+
+``` sql 
+SELECT COUNT(*)
+FROM film 
+WHERE rating IN ('PG', 'PG-13');
+```
+
+```sql 
+SELECT COUNT(*) 
+FROM film 
+WHERE rating = 'NC-17';
+``` 
+
+#### Challenge: How many different customers have entries in the rental table? 
+
+```sql
+SELECT COUNT(DISTINCT customer_id) 
+FROM rental;
+```
+
+## Group By 
+
+### 1. Does the average replacement cost of a film differ by rating?
+
+``` sql 
+SELECT AVG(replacement_cost) AS "Average Replacement Cost", rating
+FROM film 
+GROUP BY rating;
+```
+
+
 ### 
 
 ``` sql 
 
 ```
 
+
+
 ### 
 
 ``` sql 
 
 ```
 
+
+### 
+
+``` sql 
+
+```

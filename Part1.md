@@ -1,4 +1,4 @@
-## Exercise: Describe Commands
+## Describe Commands
 
 ### 1. Get a list of the tables in the database.
 
@@ -7,7 +7,7 @@
 ```
 
 
-## Exercise: Select
+## Select
 
 ### 1. Get a list of actors with the first name Julia.
 
@@ -40,7 +40,7 @@ FROM payment
 WHERE amount < 1;
 ```
 
-## Exercise: Distinct
+## Distinct
 
 ### 1. What are the different rental durations that the store allows?
 
@@ -49,7 +49,7 @@ SELECT DISTINCT rental_duration
 FROM film;
 ```
 
-## Exercise: Order By
+## Order By
 
 ### 1. What are the IDs of the last 3 customers to return a rental?
 

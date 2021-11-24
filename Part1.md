@@ -130,11 +130,22 @@ ORDER BY length(concat(first_name, last_name)) DESC
 LIMIT 10;
 ```
 
-## Functions 
+## Count, Group, and Order
 
-### 1. What is the average rental rate of films? Can you round the result to 2 decimal places?
+### 1. Which film (id) has the most actors? Which actor (id) is in the most films?
+
+``` sql
+SELECT COUNT(actor_id), film_id
+FROM film_actor
+GROUP BY film_id
+ORDER BY COUNT(actor_id) DESC;
+```
+> film_id: 508
 
 ``` sql 
-SELECT ROUND(AVG(rental_rate), 2)
-FROM film;
+SELECT COUNT(film_id), actor_id
+FROM film_actor
+GROUP BY actor_id
+ORDER BY COUNT(film_id) DESC;
 ```
+> actor_id: 107 

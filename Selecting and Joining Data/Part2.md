@@ -49,8 +49,34 @@ ON payment.customer_id = customer.customer_id;
 
 ```sql
 SELECT film_id, category_id, name 
-FROM film_category 
-INNER JOIN category 
-ON film_category.category_id = category.category_id 
+FROM film_category AS fc
+INNER JOIN category AS c
+ON fc.category_id = c.category_id 
 WHERE category_id < 10;
 ```
+
+## Joining and Grouping: Customer Spending
+
+### Get a list of the names of customers who have spent more than $150, along with their total spending.
+
+``` sql
+SELECT first_name, last_name, SUM(amount) 
+FROM customer AS c
+INNER JOIN payment AS p 
+ON c.customer_id = p.customer_id 
+GROUP BY c.first_name, c.last_name 
+HAVING SUM(amount) > 150;
+```
+
+### Who is the customer with the highest average payment amount?
+
+``` sql 
+SELECT c.customer_id, first_name, last_name, AVG(amount) 
+FROM customer AS c
+INNER JOIN payment AS p 
+ON c.customer_id = p.customer_id 
+GROUP BY c.customer_id, c.first_name, c.last_name 
+ORDER BY AVG(amount) DESC
+LIMIT 1;
+```
+

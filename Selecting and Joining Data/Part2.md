@@ -43,3 +43,14 @@ FROM customer
 INNER JOIN payment
 ON payment.customer_id = customer.customer_id;
 ```
+
+
+### Select film_id, category_id, and name from joining the film_category and category tables, only where the category_id is less than 10.
+
+```sql
+SELECT film_id, category_id, name 
+FROM film_category 
+INNER JOIN category 
+ON film_category.category_id = category.category_id 
+WHERE category_id < 10;
+```

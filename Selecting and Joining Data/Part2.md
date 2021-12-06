@@ -137,6 +137,30 @@ LIMIT 1;
 ```
 #### Challenge: Which two actors have been in the most films together? 
 
-``` sql 
+> 60 | 27 
 
+``` sql 
+SELECT a.actor_id, b.actor_id, count(*)
+FROM film_actor AS a, film_actor AS b
+WHERE a.film_id = b.film_id AND a.actor_id > b.actor_id
+GROUP BY a.actor_id, b.actor_id
+ORDER BY count(*)  DESC
+LIMIT 1;
+```
+
+
+#### Challenge: rewrite it to get the actor names instead of the IDs.
+
+> Henry Berry & Julia Mcqueen | 7
+
+``` sql 
+SELECT c.first_name, c.last_name, d.first_name, d.last_name, fcount
+FROM 
+	(SELECT a.actor_id AS "Actor1", b.actor_id AS "Actor2", count(*) AS fcount
+	FROM film_actor AS a, film_actor AS b 
+	WHERE a.film_id = b.film_id AND a.actor_id > b.actor_id
+	GROUP BY a.actor_id, b.actor_id) AS foo
+INNER JOIN actor AS c ON c.actor_id="Actor1"
+INNER JOIN actor AS d ON d.actor_id="Actor2"
+ORDER BY fcount DESC LIMIT 1;
 ```

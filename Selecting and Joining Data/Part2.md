@@ -113,6 +113,8 @@ ORDER BY customer_id;
 
 ### Repeating an exercise from Part 1, but adding in information from additional tables: Which film (by title) has the most actors? Which actor (by name) is in the most films?
 
+> 15 | Lambs Cincinatti
+
 ``` sql 
 SELECT COUNT(actor_id), f.title
 FROM film_actor as fc
@@ -122,11 +124,19 @@ GROUP BY f.film_id
 ORDER BY COUNT(actor_id) DESC
 LIMIT 1; 
 ```
-> 15 | Lambs Cincinatti
 
+> 54 | Susan Davis 
+
+``` sql 
+SELECT first_name, last_name, COUNT(film_id)
+FROM film_actor AS fc, actor AS a
+WHERE fc.actor_id = a.actor_id
+GROUP BY a.first_name, a.last_name
+ORDER BY COUNT(fc.film_id) DESC
+LIMIT 1; 
+```
 #### Challenge: Which two actors have been in the most films together? 
 
 ``` sql 
-
 
 ```

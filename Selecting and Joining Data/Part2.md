@@ -48,11 +48,11 @@ ON payment.customer_id = customer.customer_id;
 ### Select film_id, category_id, and name from joining the film_category and category tables, only where the category_id is less than 10.
 
 ```sql
-SELECT film_id, category_id, name 
+SELECT film_id, c.category_id, name 
 FROM film_category AS fc
 INNER JOIN category AS c
 ON fc.category_id = c.category_id 
-WHERE category_id < 10;
+WHERE c.category_id < 10;
 ```
 
 ## Joining and Grouping: Customer Spending
@@ -80,3 +80,13 @@ ORDER BY AVG(amount) DESC
 LIMIT 1;
 ```
 
+## Joining for Better Addresses
+
+### Create a list of addresses that includes the name of the city instead of an ID number and the name of the country as well.
+
+``` sql
+SELECT c.city, co.country 
+FROM country AS co 
+INNER JOIN city AS c ON co.country_id = c.country_id
+INNER JOIN address AS a ON c.city_id = a.city_id
+```

@@ -88,5 +88,23 @@ LIMIT 1;
 SELECT c.city, co.country 
 FROM country AS co 
 INNER JOIN city AS c ON co.country_id = c.country_id
-INNER JOIN address AS a ON c.city_id = a.city_id
+INNER JOIN address AS a ON c.city_id = a.city_id;
+```
+
+## Joining Customers, Payments, and Staff
+
+### Join the customer and payment tables together with an inner join; select customer id, name, amount, and date and order by customer id. Then join the staff table to them as well to add the staff’s name.
+
+``` sql
+SELECT c.customer_id, 
+	   c.first_name AS "Customer First Name", 
+	   c.last_name AS "Customer Last Name", 
+	   s.first_name AS "Staff First Name", 
+	   s.last_name AS "Staff Last Name", 
+	   p.amount, 
+	   p.payment_date 
+FROM customer AS c
+INNER JOIN payment AS p ON c.customer_id = p.customer_id
+INNER JOIN staff AS s ON p.staff_id = s.staff_id 
+ORDER BY customer_id; 
 ```

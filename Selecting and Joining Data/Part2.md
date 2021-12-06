@@ -156,9 +156,15 @@ LIMIT 1;
 ``` sql 
 SELECT c.first_name, c.last_name, d.first_name, d.last_name, fcount
 FROM 
-	(SELECT a.actor_id AS "Actor1", b.actor_id AS "Actor2", count(*) AS fcount
-	FROM film_actor AS a, film_actor AS b 
-	WHERE a.film_id = b.film_id AND a.actor_id > b.actor_id
+	(SELECT 
+		a.actor_id AS "Actor1", 
+		b.actor_id AS "Actor2", 
+		count(*) AS fcount
+	FROM 
+		film_actor AS a, 
+		film_actor AS b 
+	WHERE 
+		a.film_id = b.film_id AND a.actor_id > b.actor_id
 	GROUP BY a.actor_id, b.actor_id) AS foo
 INNER JOIN actor AS c ON c.actor_id="Actor1"
 INNER JOIN actor AS d ON d.actor_id="Actor2"

@@ -108,3 +108,18 @@ INNER JOIN payment AS p ON c.customer_id = p.customer_id
 INNER JOIN staff AS s ON p.staff_id = s.staff_id 
 ORDER BY customer_id; 
 ```
+
+## Joining and Grouping: Films and Actors
+
+### Repeating an exercise from Part 1, but adding in information from additional tables: Which film (by title) has the most actors? Which actor (by name) is in the most films?
+
+``` sql 
+
+```
+
+#### Challenge: Which two actors have been in the most films together? 
+
+``` sql 
+
+
+```
